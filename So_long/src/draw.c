@@ -6,7 +6,7 @@
 /*   By: angassin <angassin@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 21:27:52 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/03 19:14:33 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/03 19:21:12 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ void	draw_elements(t_program *game, int i_row, int i_col)
 	}
 	if (type == ITEM)
 	{
-		ft_printf("entered item : %c\n", type);
-		ft_printf("coordinates item [%d][%d]", i_row, i_col);
+		ft_printf("entered item : %c ", type);
+		ft_printf("coordinates item [%d][%d]\n", i_row, i_col);
 		game->item_position.x = i_row * IMG_SCALE;
 		game->item_position.y = i_col * IMG_SCALE;
 		mlx_put_image_to_window(game->mlx, game->window.ptr, game->item.ptr,
