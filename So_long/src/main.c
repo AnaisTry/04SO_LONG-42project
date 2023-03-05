@@ -6,7 +6,7 @@
 /*   By: angassin <angassin@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 16:39:34 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/04 16:36:47 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/05 19:52:49 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,6 @@ void	game_init(t_program *game)
 	game->mlx = mlx_init();
 	game->window = ft_new_window(*game, (game->window.size.x) * IMG_SCALE,
 			(game->window.size.y) * IMG_SCALE, "so_long");
+	game->nb_mov = 0;
+	game->nb_items = 0;
 }

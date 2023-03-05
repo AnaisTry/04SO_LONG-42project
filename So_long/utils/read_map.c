@@ -6,7 +6,7 @@
 /*   By: angassin <angassin@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 12:44:15 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/03 05:13:03 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/05 20:06:18 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ void	check_walls(t_program *game)
 	while (game->map[++i_row])
 	{
 		// ft_printf("wall value is : %d\n", WALL);
-		ft_printf("map[%d][0] is '%c'\n", i_row, (char)game->map[i_row][0]);
-		ft_printf("map[%d][%d] is '%c'\n", i_row, game->window.size.x - 1, (char)game->map[i_row][game->window.size.x - 1]);
+		//ft_printf("map[%d][0] is '%c'\n", i_row, (char)game->map[i_row][0]);
+		//ft_printf("map[%d][%d] is '%c'\n", i_row, game->window.size.x - 1, (char)game->map[i_row][game->window.size.x - 1]);
 		//ft_printf("map[%d][window.size.x - 1] is %d\n", i_row, game->window.size.x - 1);
 		if (game->map[i_row][0] != WALL
 			|| game->map[i_row][game->window.size.x - 1] != WALL)
