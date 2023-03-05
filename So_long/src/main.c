@@ -6,7 +6,7 @@
 /*   By: angassin <angassin@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 16:39:34 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/03 18:10:52 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/04 16:36:47 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,6 @@ int	main(int argc, char	**argv)
 	check_map(argv[1], &game);
 	game_init(&game);
 	draw_map(&game);
-
-	// game.tile = ft_new_sprite(game.mlx, "sprites/grass64.xpm");
-	// game.tile_position.x = 0;
-	// game.tile_position.y = 0; 
-	// mlx_put_image_to_window(game.mlx, game.window.ptr, game.tile.ptr,
-	// 							game.tile_position.x, game.tile_position.y);
-	
-
-
-	
-	
 	// mlx_pixel_put(mlx_ptr, win_ptr, 20, 250, 0xFFFFFF);
 	mlx_key_hook(game.window.ptr, *ft_input, &game);
 	//mlx_loop_hook(game.mlx, *ft_update, &game);
