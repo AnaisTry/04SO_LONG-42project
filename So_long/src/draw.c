@@ -6,7 +6,7 @@
 /*   By: angassin <angassin@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 21:27:52 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/05 20:04:32 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/06 12:20:11 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	draw_map(t_program	*game)
 			draw_elements(game, i_row, i_col);
 		}
 	}
+	ft_printf("nb_items : %d\n", game->nb_items);
 }
 
 void	draw_background(t_program *game, int i_row, int i_col)
@@ -67,6 +68,7 @@ void	draw_elements(t_program *game, int i_row, int i_col)
 	{
 		//ft_printf("entered item : %c ", type);
 		//ft_printf("coordinates item [%d][%d]\n", i_row, i_col);
+		game->nb_items++;
 		game->item_position.x = i_col * IMG_SCALE;
 		game->item_position.y = i_row * IMG_SCALE;
 		mlx_put_image_to_window(game->mlx, game->window.ptr, game->item.ptr,

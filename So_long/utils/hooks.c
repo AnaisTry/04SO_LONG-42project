@@ -6,7 +6,7 @@
 /*   By: angassin <angassin@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:50:07 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/06 12:07:35 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/06 12:24:33 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	ft_input(int key, t_program *game)
 		game->sprite.ptr, game->sprite_position.x, game->sprite_position.y);
 	
 	// print the key pressed so you know the number of each key
-	ft_printf("Key pressed -> %d\n", key);
+	//ft_printf("Key pressed -> %d\n", key);
 }
 
 /* Put a tile where the sprite was standing */
@@ -80,6 +80,10 @@ void	action(t_program *game)
 	mlx_put_image_to_window(game->mlx, game->window.ptr,
 		game->tile.ptr, game->tile_position.x,
 		game->tile_position.y);
-	game->nb_items++;
-	ft_printf("collected : %d\n", game->nb_items);
+	game->nb_items--;
+	ft_printf("items left : %d\n", game->nb_items);
+	if (game->nb_items == 0)
+	{
+		//open exit
+	}
 }
