@@ -6,7 +6,7 @@
 /*   By: angassin <angassin@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:50:07 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/06 12:24:33 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/06 23:47:59 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,33 +18,33 @@
 	
 	3. displays the new image
 */
-void	ft_input(int key, t_program *game)
+int	ft_input(int key, t_program *game)
 {
 	int			map_x;
 	int			map_y;
 
 	map_x = game->sprite_position.y / IMG_SCALE;
 	map_y = game->sprite_position.x / IMG_SCALE;
-	ft_printf("map_x %d, map_y %d\n", map_x, map_y);
+	//ft_printf("map_x %d, map_y %d\n", map_x, map_y);
 	//mlx_clear_window(game->mlx, game->window.ptr);
 	if (key == esc)
 		ft_close(game);
-	if ((key == w || key == up) && (game->map[map_x - 1][map_y] != WALL))
+	if ((key == w || key == up) && (game->map[map_x - 1][map_y] != WALL && game->map[map_x - 1][map_y] != EXIT))
 	{
 		ft_update(game, map_x - 1, map_y);
 		game->sprite_position.y -= game->sprite.size.y;
 	}
-	if ((key == a || key == left) && (game->map[map_x][map_y - 1] != WALL))
+	if ((key == a || key == left) && (game->map[map_x][map_y - 1] != WALL && game->map[map_x][map_y - 1] != EXIT))
 	{	
 		ft_update(game, map_x, map_y - 1);
 		game->sprite_position.x -= game->sprite.size.x;
 	}
-	if ((key == s || key == down) && (game->map[map_x + 1][map_y] != WALL))
+	if ((key == s || key == down) && (game->map[map_x + 1][map_y] != WALL && game->map[map_x + 1][map_y] != EXIT))
 	{
 		ft_update(game, map_x + 1, map_y);
 		game->sprite_position.y += game->sprite.size.y;
 	}
-	if ((key == d || key == right) && (game->map[map_x][map_y + 1] != WALL))
+	if ((key == d || key == right) && (game->map[map_x][map_y + 1] != WALL && game->map[map_x][map_y + 1] != EXIT))
 	{
 		ft_update(game, map_x, map_y + 1);
 		game->sprite_position.x += game->sprite.size.x;
@@ -54,11 +54,16 @@ void	ft_input(int key, t_program *game)
 	
 	// print the key pressed so you know the number of each key
 	//ft_printf("Key pressed -> %d\n", key);
+	return (0);
 }
 
 /* Put a tile where the sprite was standing */
 int	ft_update(t_program	*game, int map_x, int map_y)
 {
+	// int	current_spot_x;
+	// int	current_spot_y;
+
+	// current_spot_x = game->sprite_position.y / IMG_SCALE;
 	game->nb_mov++;
 	ft_printf("nb movements : %d\n", game->nb_mov);
 	if (game->map[map_x][map_y] == ITEM)
@@ -68,6 +73,7 @@ int	ft_update(t_program	*game, int map_x, int map_y)
 		game->tile_position.y = map_x * IMG_SCALE;
 		action(game);
 	}
+
 	mlx_put_image_to_window(game->mlx, game->window.ptr,
 		game->tile.ptr, game->sprite_position.x,
 		game->sprite_position.y);
@@ -84,6 +90,10 @@ void	action(t_program *game)
 	ft_printf("items left : %d\n", game->nb_items);
 	if (game->nb_items == 0)
 	{
-		//open exit
+		game->exit = ft_new_sprite(game->mlx, "sprites/door_fullyopen_96.xpm");
+		mlx_put_image_to_window(game->mlx, game->window.ptr, game->tile.ptr,
+			game->exit_position.x, game->exit_position.y);
+		mlx_put_image_to_window(game->mlx, game->window.ptr, game->exit.ptr,
+			game->exit_position.x, game->exit_position.y);
 	}
 }

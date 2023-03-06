@@ -6,7 +6,7 @@
 /*   By: angassin <angassin@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 23:34:59 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/06 12:06:34 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/06 23:43:50 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,9 @@ typedef struct s_program
 	t_vector	item_position;
 	t_image		tile;
 	t_vector	tile_position;
+	t_image		exit;
+	t_vector	exit_position;
+	// t_vector	out;
 	int			nb_mov;
 	int			nb_items;
 }				t_program;
@@ -115,7 +118,8 @@ int			ft_close(t_program *game);
 // image.c
 t_image		ft_new_sprite(void *mlx, char *path);
 // hook.c
-void		ft_input(int key, t_program *param);
+//return value required by mlx_key_hook
+int			ft_input(int key, t_program *param);
 int			ft_update(t_program *game, int map_x, int map_y);
 void		action(t_program *game);
 // read_map.c

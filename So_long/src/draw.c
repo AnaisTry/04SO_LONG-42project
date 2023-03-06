@@ -6,7 +6,7 @@
 /*   By: angassin <angassin@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 21:27:52 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/06 12:20:11 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/06 23:44:06 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	draw_map(t_program	*game)
 	game->wall = ft_new_sprite(game->mlx, "sprites/trees_96.xpm");
 	game->item = ft_new_sprite(game->mlx, "sprites/strawberry_96.xpm");
 	game->sprite = ft_new_sprite(game->mlx, "sprites/fox_96.xpm");
+	game->exit = ft_new_sprite(game->mlx, "sprites/door_closed_96.xpm");
 	i_row = -1;
 	while (game->map[++i_row])
 	{
@@ -73,5 +74,14 @@ void	draw_elements(t_program *game, int i_row, int i_col)
 		game->item_position.y = i_row * IMG_SCALE;
 		mlx_put_image_to_window(game->mlx, game->window.ptr, game->item.ptr,
 			game->item_position.x, game->item_position.y);
+	}
+	if (type == EXIT)
+	{
+		// game->out.x = i_col;
+		// game->out.y = i_row;
+		game->exit_position.x = i_col * IMG_SCALE;
+		game->exit_position.y = i_row * IMG_SCALE;
+		mlx_put_image_to_window(game->mlx, game->window.ptr, game->exit.ptr,
+			game->exit_position.x, game->exit_position.y);
 	}
 }
