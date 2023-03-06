@@ -6,7 +6,7 @@
 /*   By: angassin <angassin@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:50:07 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/05 20:26:44 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/06 12:07:35 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,11 @@
 	
 	3. displays the new image
 */
-int	ft_input(int key, void *param)
+void	ft_input(int key, t_program *game)
 {
-	t_program	*game;
 	int			map_x;
 	int			map_y;
 
-	game = (t_program *)param;
 	map_x = game->sprite_position.y / IMG_SCALE;
 	map_y = game->sprite_position.x / IMG_SCALE;
 	ft_printf("map_x %d, map_y %d\n", map_x, map_y);
@@ -56,25 +54,19 @@ int	ft_input(int key, void *param)
 	
 	// print the key pressed so you know the number of each key
 	ft_printf("Key pressed -> %d\n", key);
-	return (0);
 }
 
 /* Put a tile where the sprite was standing */
-int	ft_update(void	*param, int map_x, int map_y)
+int	ft_update(t_program	*game, int map_x, int map_y)
 {
-	t_program	*game;
-
-	game = (t_program *)param;
 	game->nb_mov++;
 	ft_printf("nb movements : %d\n", game->nb_mov);
 	if (game->map[map_x][map_y] == ITEM)
 	{
 		game->map[map_x][map_y] = TILE;
-		// mlx_put_image_to_window(game->mlx, game->window.ptr,
-		// 	game->tile.ptr, game->item_position.x,
-		// 	game->item_position.y);
-		game->nb_items++;
-		ft_printf("collected : %d\n", game->nb_items);
+		game->tile_position.x = map_y * IMG_SCALE;
+		game->tile_position.y = map_x * IMG_SCALE;
+		action(game);
 	}
 	mlx_put_image_to_window(game->mlx, game->window.ptr,
 		game->tile.ptr, game->sprite_position.x,
@@ -83,7 +75,11 @@ int	ft_update(void	*param, int map_x, int map_y)
 	return (0);
 }
 
-// void	moving_rules(t_program	*game)
-// {
-
-// }
+void	action(t_program *game)
+{
+	mlx_put_image_to_window(game->mlx, game->window.ptr,
+		game->tile.ptr, game->tile_position.x,
+		game->tile_position.y);
+	game->nb_items++;
+	ft_printf("collected : %d\n", game->nb_items);
+}

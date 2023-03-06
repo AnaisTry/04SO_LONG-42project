@@ -6,7 +6,7 @@
 /*   By: angassin <angassin@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 23:34:59 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/05 19:52:17 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/06 12:06:34 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,8 +115,9 @@ int			ft_close(t_program *game);
 // image.c
 t_image		ft_new_sprite(void *mlx, char *path);
 // hook.c
-int			ft_input(int key, void *param);
-int			ft_update(void *param, int map_x, int map_y);
+void		ft_input(int key, t_program *param);
+int			ft_update(t_program *game, int map_x, int map_y);
+void		action(t_program *game);
 // read_map.c
 void		check_map(char	*argv, t_program *game);
 
