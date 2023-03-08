@@ -6,7 +6,7 @@
 /*   By: angassin <angassin@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 23:34:59 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/08 15:10:36 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/08 22:40:02 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ typedef struct s_image
 typedef struct s_program
 {
 	void		*mlx;
-	t_map		map_infos;
+	t_map		elements;
 	t_window	window;
 	t_image		wall;
 	t_vector	wall_pos;

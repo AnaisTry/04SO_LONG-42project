@@ -6,7 +6,7 @@
 /*   By: angassin <angassin@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:50:07 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/08 15:00:31 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/08 23:10:48 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,9 @@
 static int	ft_update(t_program *game, int map_x, int map_y);
 static void	action(t_program *game);
 static bool	move_allowed(t_program *game, int map_x, int map_y);
+static void	key_pressed(int key, t_program *game, int map_x, int map_y);
 
-/*
-	Movement of the sprite according to user input :
-	1. determines the new pos of the sprite according to the key pressed
-	2. update the elements accordingly
-	3. displays the new image of the player
-*/
+/* Movement of the sprite according to user input */
 int	ft_input(int key, t_program *game)
 {
 	int			map_x;
@@ -29,6 +25,18 @@ int	ft_input(int key, t_program *game)
 
 	map_x = game->sprite_pos.y / IMG_SCALE;
 	map_y = game->sprite_pos.x / IMG_SCALE;
+	key_pressed(key, game, map_x, map_y);
+	return (0);
+}
+
+/* 
+	Interactions with the keyboard
+	1. determines the new pos of the sprite according to the key pressed
+	2. update the elements accordingly
+	3. displays the new image of the player
+*/
+static void	key_pressed(int key, t_program *game, int map_x, int map_y)
+{
 	if (key == ESC)
 		ft_close(game);
 	if ((key == w || key == UP) && move_allowed(game, map_x - 1, map_y))
@@ -53,37 +61,31 @@ int	ft_input(int key, t_program *game)
 	}
 	mlx_put_image_to_window(game->mlx, game->window.ptr,
 		game->sprite.ptr, game->sprite_pos.x, game->sprite_pos.y);
-	return (0);
 }
 
 /* 
 	Put a tile where the sprite was standing, update the map when an item is 
 	taken and exit the game if the player enter the open exit
 */
+//static	int	frame;
 static int	ft_update(t_program	*game, int map_x, int map_y)
 {
-	// int	current_spot_x;
-	// int	current_spot_y;
-
-	// current_spot_x = game->sprite_pos.y / IMG_SCALE;
-	if (game->map_infos.map[map_x][map_y] == EXIT ) //&& open
+	if (game->elements.map[map_x][map_y] == EXIT)
 	{
 		ft_close(game);
 		return (1);
 	}
 	game->nb_mov++;
 	ft_printf("nb movements : %d\n", game->nb_mov);
-	if (game->map_infos.map[map_x][map_y] == ITEM)
+	if (game->elements.map[map_x][map_y] == ITEM)
 	{
-		game->map_infos.map[map_x][map_y] = TILE;
+		game->elements.map[map_x][map_y] = TILE;
 		game->tile_pos.x = map_y * IMG_SCALE;
 		game->tile_pos.y = map_x * IMG_SCALE;
 		action(game);
 	}
 	mlx_put_image_to_window(game->mlx, game->window.ptr,
 		game->tile.ptr, game->sprite_pos.x, game->sprite_pos.y);
-	
-	//static	int	frame;
 	return (0);
 }
 
@@ -110,9 +112,9 @@ static void	action(t_program *game)
 
 static bool	move_allowed(t_program *game, int map_x, int map_y)
 {
-	if (game->map_infos.map[map_x][map_y] == WALL)
+	if (game->elements.map[map_x][map_y] == WALL)
 		return (false);
-	if (game->map_infos.map[map_x][map_y] == EXIT && game->exit_open == false)
+	if (game->elements.map[map_x][map_y] == EXIT && game->exit_open == false)
 	{	
 		ft_printf("exit_open : %d\n", game->exit_open);
 		return (false);
