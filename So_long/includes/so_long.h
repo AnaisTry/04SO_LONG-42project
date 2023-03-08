@@ -6,7 +6,7 @@
 /*   By: angassin <angassin@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 23:34:59 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/06 23:43:50 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/08 09:47:58 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 // perror
 # include <stdio.h>
 # include <sys/errno.h>
+// bool
+# include <stdbool.h> 
 // libft
 # include "../libft/includes/libft.h"
 # include "../libft/includes/libftprintf.h"
@@ -102,9 +104,9 @@ typedef struct s_program
 	t_vector	tile_position;
 	t_image		exit;
 	t_vector	exit_position;
-	// t_vector	out;
 	int			nb_mov;
 	int			nb_items;
+	bool		exit_open;
 }				t_program;
 
 /* src */

@@ -6,7 +6,7 @@
 /*   By: angassin <angassin@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 16:39:34 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/06 22:46:07 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/08 09:53:19 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,5 @@ void	game_init(t_program *game)
 	ft_printf("init\n");
 	game->nb_mov = 0;
 	game->nb_items = 0;
+	//game->exit_open = false;
 }
