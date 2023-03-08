@@ -6,7 +6,7 @@
 /*   By: angassin <angassin@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 23:34:59 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/08 14:00:05 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/08 15:10:36 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,6 @@
 # define DESTROY_NOTIFY 17
 # define MASK 0
 
-// map elements
-// # define TILE '0'
-// # define WALL '1'
-// # define PLAYER	'P'
-// # define ITEM 'C'
-// # define EXIT 'E'
-
 /*									[Typedefs]								*/
 
 // map elements
@@ -83,6 +76,12 @@ typedef struct s_vector
 	int	y;
 }				t_vector;
 
+typedef struct s_map
+{
+	char		**map;
+	t_elements	type;
+	t_vector	pos;
+}				t_map;
 typedef struct s_window
 {
 	void		*ptr;
@@ -102,18 +101,18 @@ typedef struct s_image
 typedef struct s_program
 {
 	void		*mlx;
-	char		**map;
+	t_map		map_infos;
 	t_window	window;
 	t_image		wall;
-	t_vector	wall_position;
+	t_vector	wall_pos;
 	t_image		sprite;
-	t_vector	sprite_position;
+	t_vector	sprite_pos;
 	t_image		item;
-	t_vector	item_position;
+	t_vector	item_pos;
 	t_image		tile;
-	t_vector	tile_position;
+	t_vector	tile_pos;
 	t_image		exit;
-	t_vector	exit_position;
+	t_vector	exit_pos;
 	int			nb_mov;
 	int			nb_items;
 	bool		exit_open;
@@ -124,16 +123,18 @@ typedef struct s_program
 void		draw_map(t_program	*game);
 
 /* utils */
+
 // window.c
 t_window	ft_new_window(t_program game, int width, int height, char *name);
 int			ft_close(t_program *game);
+
 // image.c
 t_image		ft_new_sprite(void *mlx, char *path);
+
 // hook.c
 //return value required by mlx_key_hook
 int			ft_input(int key, t_program *param);
-int			ft_update(t_program *game, int map_x, int map_y);
-void		action(t_program *game);
+
 // read_map.c
 void		check_map(char	*argv, t_program *game);
 
