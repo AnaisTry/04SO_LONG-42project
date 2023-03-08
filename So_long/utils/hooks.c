@@ -6,7 +6,7 @@
 /*   By: angassin <angassin@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:50:07 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/08 10:19:37 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/08 11:55:04 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,16 +64,16 @@ int	ft_update(t_program	*game, int map_x, int map_y)
 	// int	current_spot_y;
 
 	// current_spot_x = game->sprite_position.y / IMG_SCALE;
-	if (game->map[map_x][map_y] == EXIT ) //&& open
+	if (game->map[map_x][map_y] == door ) //&& open
 	{
 			ft_close(game);
 			return (1);
 	}
 	game->nb_mov++;
 	ft_printf("nb movements : %d\n", game->nb_mov);
-	if (game->map[map_x][map_y] == ITEM)
+	if (game->map[map_x][map_y] == item)
 	{
-		game->map[map_x][map_y] = TILE;
+		game->map[map_x][map_y] = tiling;
 		game->tile_position.x = map_y * IMG_SCALE;
 		game->tile_position.y = map_x * IMG_SCALE;
 		action(game);
@@ -109,9 +109,9 @@ void	action(t_program *game)
 
 bool	move_allowed(t_program *game, int map_x, int map_y)
 {
-	if (game->map[map_x][map_y] == WALL)
+	if (game->map[map_x][map_y] == wall)
 		return (false);
-	if (game->map[map_x][map_y] == EXIT && game->exit_open == false)
+	if (game->map[map_x][map_y] == door && game->exit_open == false)
 	{	
 		ft_printf("exit_open : %d\n", game->exit_open);
 		return (false);

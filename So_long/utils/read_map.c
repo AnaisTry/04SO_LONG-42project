@@ -6,7 +6,7 @@
 /*   By: angassin <angassin@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 12:44:15 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/06 22:53:52 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/08 11:53:24 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ void	check_walls(t_program *game)
 		//ft_printf("map[%d][0] is '%c'\n", i_row, (char)game->map[i_row][0]);
 		//ft_printf("map[%d][%d] is '%c'\n", i_row, game->window.size.x - 1, (char)game->map[i_row][game->window.size.x - 1]);
 		//ft_printf("map[%d][window.size.x - 1] is %d\n", i_row, game->window.size.x - 1);
-		if (game->map[i_row][0] != WALL
-			|| game->map[i_row][game->window.size.x - 1] != WALL)
+		if (game->map[i_row][0] != wall
+			|| game->map[i_row][game->window.size.x - 1] != wall)
 			error_exit("Invalid map : not a rectangle or missing "
 			"wall at the end of a row");
 		i_col = -1;
@@ -87,8 +87,8 @@ void	check_walls(t_program *game)
 		while (game->map[i_row][++i_col])
 		{
 			//ft_printf("map[window.size.y - 1][%d] is %d\n", i_col, game->window.size.y - 1);
-			if (game->map[0][i_col] != WALL ||
-				game->map[game->window.size.y - 1][i_col] != WALL)
+			if (game->map[0][i_col] != wall ||
+				game->map[game->window.size.y - 1][i_col] != wall)
 				error_exit("Invalid map : not a rectangle or missing "
 				"wall at the end of a column");
 			//row_len++che

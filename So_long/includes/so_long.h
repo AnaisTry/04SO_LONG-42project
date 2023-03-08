@@ -6,7 +6,7 @@
 /*   By: angassin <angassin@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 23:34:59 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/08 09:47:58 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/08 11:52:26 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,23 @@
 # define MASK 0
 
 // map elements
-# define TILE '0'
-# define WALL '1'
-# define PLAYER	'P'
-# define ITEM 'C'
-# define EXIT 'E'
+// # define TILE '0'
+// # define WALL '1'
+// # define PLAYER	'P'
+// # define ITEM 'C'
+// # define EXIT 'E'
 
 /*									[Typedefs]								*/
+
+// map elements
+typedef enum e_elements
+{
+	tiling = '0',
+	wall = '1',
+	player = 'P',
+	item = 'C',
+	door = 'E'
+}			t_elements;
 
 // keyboard
 typedef enum e_keys
