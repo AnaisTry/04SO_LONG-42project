@@ -6,7 +6,7 @@
 /*   By: angassin <angassin@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 21:27:52 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/08 11:53:06 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/08 13:51:19 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,21 +51,21 @@ void	draw_elements(t_program *game, int i_row, int i_col)
 	char	type;
 
 	type = game->map[i_row][i_col];
-	if (type == wall)
+	if (type == WALL)
 	{
 		game->wall_position.y = i_row * IMG_SCALE;
 		game->wall_position.x = i_col * IMG_SCALE;
 		mlx_put_image_to_window(game->mlx, game->window.ptr, game->wall.ptr,
 			game->wall_position.x, game->wall_position.y);
 	}
-	if (type == player)
+	if (type == PLAYER)
 	{
 		game->sprite_position.x = i_col * IMG_SCALE;
 		game->sprite_position.y = i_row * IMG_SCALE;
 		mlx_put_image_to_window(game->mlx, game->window.ptr, game->sprite.ptr,
 			game->sprite_position.x, game->sprite_position.y);
 	}
-	if (type == item)
+	if (type == ITEM)
 	{
 		//ft_printf("entered item : %c ", type);
 		//ft_printf("coordinates item [%d][%d]\n", i_row, i_col);
@@ -75,7 +75,7 @@ void	draw_elements(t_program *game, int i_row, int i_col)
 		mlx_put_image_to_window(game->mlx, game->window.ptr, game->item.ptr,
 			game->item_position.x, game->item_position.y);
 	}
-	if (type == door)
+	if (type == EXIT)
 	{
 		// game->out.x = i_col;
 		// game->out.y = i_row;

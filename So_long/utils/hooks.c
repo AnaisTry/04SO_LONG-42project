@@ -6,7 +6,7 @@
 /*   By: angassin <angassin@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:50:07 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/08 11:55:04 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/08 14:00:46 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,24 @@ int	ft_input(int key, t_program *game)
 
 	map_x = game->sprite_position.y / IMG_SCALE;
 	map_y = game->sprite_position.x / IMG_SCALE;
-	if (key == esc)
+	if (key == ESC)
 		ft_close(game);
-	if ((key == w || key == up) && move_allowed(game, map_x - 1, map_y))
+	if ((key == w || key == UP) && move_allowed(game, map_x - 1, map_y))
 	{
 		ft_update(game, map_x - 1, map_y);
 		game->sprite_position.y -= game->sprite.size.y;
 	}
-	if ((key == a || key == left) && move_allowed(game, map_x, map_y - 1))
+	if ((key == a || key == LEFT) && move_allowed(game, map_x, map_y - 1))
 	{	
 		ft_update(game, map_x, map_y - 1);
 		game->sprite_position.x -= game->sprite.size.x;
 	}
-	if ((key == s || key == down) && move_allowed(game, map_x + 1, map_y))
+	if ((key == s || key == DOWN) && move_allowed(game, map_x + 1, map_y))
 	{
 		ft_update(game, map_x + 1, map_y);
 		game->sprite_position.y += game->sprite.size.y;
 	}
-	if ((key == d || key == right) && move_allowed(game, map_x, map_y + 1))
+	if ((key == d || key == RIGHT) && move_allowed(game, map_x, map_y + 1))
 	{
 		ft_update(game, map_x, map_y + 1);
 		game->sprite_position.x += game->sprite.size.x;
@@ -64,23 +64,22 @@ int	ft_update(t_program	*game, int map_x, int map_y)
 	// int	current_spot_y;
 
 	// current_spot_x = game->sprite_position.y / IMG_SCALE;
-	if (game->map[map_x][map_y] == door ) //&& open
+	if (game->map[map_x][map_y] == EXIT ) //&& open
 	{
-			ft_close(game);
-			return (1);
+		ft_close(game);
+		return (1);
 	}
 	game->nb_mov++;
 	ft_printf("nb movements : %d\n", game->nb_mov);
-	if (game->map[map_x][map_y] == item)
+	if (game->map[map_x][map_y] == ITEM)
 	{
-		game->map[map_x][map_y] = tiling;
+		game->map[map_x][map_y] = TILE;
 		game->tile_position.x = map_y * IMG_SCALE;
 		game->tile_position.y = map_x * IMG_SCALE;
 		action(game);
 	}
 	mlx_put_image_to_window(game->mlx, game->window.ptr,
-		game->tile.ptr, game->sprite_position.x,
-		game->sprite_position.y);
+		game->tile.ptr, game->sprite_position.x, game->sprite_position.y);
 	
 	//static	int	frame;
 	return (0);
@@ -109,9 +108,9 @@ void	action(t_program *game)
 
 bool	move_allowed(t_program *game, int map_x, int map_y)
 {
-	if (game->map[map_x][map_y] == wall)
+	if (game->map[map_x][map_y] == WALL)
 		return (false);
-	if (game->map[map_x][map_y] == door && game->exit_open == false)
+	if (game->map[map_x][map_y] == EXIT && game->exit_open == false)
 	{	
 		ft_printf("exit_open : %d\n", game->exit_open);
 		return (false);

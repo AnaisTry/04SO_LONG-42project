@@ -6,7 +6,7 @@
 /*   By: angassin <angassin@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 23:34:59 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/08 11:52:26 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/08 14:00:05 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,25 +56,25 @@
 // map elements
 typedef enum e_elements
 {
-	tiling = '0',
-	wall = '1',
-	player = 'P',
-	item = 'C',
-	door = 'E'
+	TILE = '0',
+	WALL = '1',
+	PLAYER = 'P',
+	ITEM = 'C',
+	EXIT = 'E'
 }			t_elements;
 
 // keyboard
 typedef enum e_keys
 {
-	esc = 53,
+	ESC = 53,
 	a = 0,
 	s,
 	d,
 	w = 13,
-	left = 123,
-	right,
-	down,
-	up
+	LEFT = 123,
+	RIGHT,
+	DOWN,
+	UP
 }			t_keys;
 
 typedef struct s_vector
