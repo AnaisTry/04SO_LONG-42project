@@ -6,7 +6,7 @@
 /*   By: angassin <angassin@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 12:44:15 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/09 23:42:28 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/09 23:58:55 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	**read_file(char *file);
 void	check_elements(t_program *game);
-void	check_walls(t_program *game);
+void	check_grid(t_program *game);
 
 /* 
 	check the extension of the map_file
@@ -31,7 +31,7 @@ void	check_map(char	*map_file, t_program *game)
 	game->window.size.y = map_height(game->elements.map);
 	ft_printf("window height : %d\n", game->window.size.y);
 	check_elements(game);
-	check_walls(game);
+	check_grid(game);
 }
 
 //ft_printf("all the lines: \n%s\n", lines);
@@ -75,7 +75,10 @@ void	check_elements(t_program *game)
 		error_exit("At least one item is required on the map");
 }
 
-/* checks that the map is rectangular and surrounded by walls */
+/* 
+	checks that the map is rectangular and surrounded by walls
+	checks that there are only valid characters on the map 
+*/
 // ft_printf("wall value is : %d\n", WALL);
 //ft_printf("map[%d][0] is '%c'\n", i_row, (char)game->map[i_row][0]);
 //ft_printf("map[%d][%d] is '%c'\n", i_row, game->window.size.x - 1,
@@ -84,7 +87,7 @@ void	check_elements(t_program *game)
 //game->window.size.x - 1);
 //ft_printf("map[window.size.y - 1][%d] is %d\n", i_col, 
 //game->window.size.y - 1);
-void	check_walls(t_program *game)
+void	check_grid(t_program *game)
 {
 	int	i_row;
 	int	i_col;
@@ -103,6 +106,8 @@ void	check_walls(t_program *game)
 				game->elements.map[game->window.size.y - 1][i_col] != WALL)
 				error_exit("Invalid map : not a rectangle or missing "
 					"wall at the end of a column");
+			if (!ft_strchr(VALID_CHARS, game->elements.map[i_row][i_col]))
+				error_exit("Invalid map : unknown element");
 		}
 	}
 }

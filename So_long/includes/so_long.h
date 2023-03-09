@@ -6,7 +6,7 @@
 /*   By: angassin <angassin@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 23:34:59 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/09 22:58:51 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/09 23:52:44 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@
 
 # define MAP_EXT ".ber"
 # define IMG_SCALE 96
-
+# define VALID_CHARS "01CEP"
 // events
 # define DESTROY_NOTIFY 17
 # define MASK 0
