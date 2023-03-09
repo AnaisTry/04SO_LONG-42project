@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils.nb_elemen                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: angassin <angassin@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -21,4 +21,23 @@ int	map_height(char	**map)
 		i++;
 	ft_printf("map height : %d\n", i);
 	return (i);
+}
+
+int	count_elements(t_program *game, char type)
+{
+	int	i;
+	int	j;
+	int	nb;
+
+	nb = 0;
+	i = -1;
+	while (game->elements.map[++i])
+	{
+		j = -1;
+		while (game->elements.map[i][++j])
+			if (game->elements.map[i][j] == type)
+				nb++;
+	}
+	ft_printf("nb_elements : %d\n", nb);
+	return (nb);
 }

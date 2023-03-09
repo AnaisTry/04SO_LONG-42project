@@ -6,7 +6,7 @@
 /*   By: angassin <angassin@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 23:34:59 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/09 22:35:46 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/09 22:58:51 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,5 +143,6 @@ void		error_exit(char *err_message);
 
 // utils.c
 int			map_height(char	**map);
+int			count_elements(t_program *game, char type);
 
 #endif

@@ -6,13 +6,14 @@
 /*   By: angassin <angassin@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 12:44:15 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/09 22:34:46 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/09 23:42:28 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
 char	**read_file(char *file);
+void	check_elements(t_program *game);
 void	check_walls(t_program *game);
 
 /* 
@@ -29,6 +30,7 @@ void	check_map(char	*map_file, t_program *game)
 	ft_printf("window width : %d\n", game->window.size.x);
 	game->window.size.y = map_height(game->elements.map);
 	ft_printf("window height : %d\n", game->window.size.y);
+	check_elements(game);
 	check_walls(game);
 }
 
@@ -60,6 +62,17 @@ char	**read_file(char *file)
 		free(lines);
 	close(fd);
 	return (map);
+}
+
+void	check_elements(t_program *game)
+{
+	ft_printf("check_elements\n");
+	if (count_elements(game, PLAYER) != 1)
+		error_exit("There must be only one player on the map");
+	else if (count_elements(game, EXIT) != 1)
+		error_exit("There must be only one exit on the map");
+	else if (count_elements(game, ITEM) <= 0)
+		error_exit("At least one item is required on the map");
 }
 
 /* checks that the map is rectangular and surrounded by walls */
