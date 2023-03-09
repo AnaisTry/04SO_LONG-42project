@@ -6,7 +6,7 @@
 #    By: angassin <angassin@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/21 17:16:32 by angassin          #+#    #+#              #
-#    Updated: 2023/03/09 20:32:18 by angassin         ###   ########.fr        #
+#    Updated: 2023/03/09 22:40:56 by angassin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ LIBFT		= $(addprefix libft/, $(LIBFT_A))
 GAME		= main.c draw.c
 GAME_SRC	= $(addprefix src/, $(GAME))
 
-UTILS		= window.c image.c hooks.c read_map.c #color.c
+UTILS		= window.c image.c hooks.c read_map.c errors.c utils.c #color.c
 UTILS_SRC	= $(addprefix utils/, $(UTILS)) 
 
 OBJ			= $(SRC:.c=.o)

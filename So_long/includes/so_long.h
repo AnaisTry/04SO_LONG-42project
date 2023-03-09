@@ -6,7 +6,7 @@
 /*   By: angassin <angassin@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 23:34:59 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/09 20:31:05 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/09 22:35:46 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,5 +137,11 @@ int			ft_input(int key, t_program *param);
 
 // read_map.c
 void		check_map(char	*argv, t_program *game);
+
+// errors.c
+void		error_exit(char *err_message);
+
+// utils.c
+int			map_height(char	**map);
 
 #endif

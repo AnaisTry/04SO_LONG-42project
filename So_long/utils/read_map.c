@@ -6,15 +6,13 @@
 /*   By: angassin <angassin@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 12:44:15 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/08 23:16:08 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/09 22:34:46 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
 char	**read_file(char *file);
-void	error_exit(char *err_message);
-int		map_height(char	**map);
 void	check_walls(t_program *game);
 
 /* 
@@ -94,21 +92,4 @@ void	check_walls(t_program *game)
 					"wall at the end of a column");
 		}
 	}
-}
-
-void	error_exit(char *err_message)
-{
-	perror(err_message);
-	exit (1);
-}
-
-int	map_height(char	**map)
-{
-	int	i;
-
-	i = 0;
-	while (map && map[i])
-		i++;
-	ft_printf("map height : %d\n", i);
-	return (i);
 }
