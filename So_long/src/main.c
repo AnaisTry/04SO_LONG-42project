@@ -6,13 +6,11 @@
 /*   By: angassin <angassin@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 16:39:34 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/08 22:55:02 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/09 20:31:23 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../mlx/mlx.h"
 #include "../includes/so_long.h"
-#include <unistd.h>
 
 void	game_init(t_program *game);
 

@@ -6,7 +6,7 @@
 /*   By: angassin <angassin@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 12:44:15 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/08 22:41:52 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/08 23:16:08 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,15 @@ char	**read_file(char *file)
 	return (map);
 }
 
-		// ft_printf("wall value is : %d\n", WALL);
-		//ft_printf("map[%d][0] is '%c'\n", i_row, (char)game->map[i_row][0]);
-		//ft_printf("map[%d][%d] is '%c'\n", i_row, game->window.size.x - 1, (char)game->map[i_row][game->window.size.x - 1]);
-		//ft_printf("map[%d][window.size.x - 1] is %d\n", i_row, game->window.size.x - 1);
-		//ft_printf("map[window.size.y - 1][%d] is %d\n", i_col, game->window.size.y - 1);
 /* checks that the map is rectangular and surrounded by walls */
+// ft_printf("wall value is : %d\n", WALL);
+//ft_printf("map[%d][0] is '%c'\n", i_row, (char)game->map[i_row][0]);
+//ft_printf("map[%d][%d] is '%c'\n", i_row, game->window.size.x - 1,
+//	(char)game->map[i_row][game->window.size.x - 1]);
+//ft_printf("map[%d][window.size.x - 1] is %d\n", i_row,
+//game->window.size.x - 1);
+//ft_printf("map[window.size.y - 1][%d] is %d\n", i_col, 
+//game->window.size.y - 1);
 void	check_walls(t_program *game)
 {
 	int	i_row;

@@ -6,7 +6,7 @@
 #    By: angassin <angassin@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/21 17:16:32 by angassin          #+#    #+#              #
-#    Updated: 2023/03/06 12:29:12 by angassin         ###   ########.fr        #
+#    Updated: 2023/03/09 20:32:18 by angassin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ CFLAGS		= -Wall -Wextra -Werror
 
 DEBUG		=  -g3 -fsanitize=address
 
-MLX			= -Lmlx -lmlx -framework OpenGL -framework AppKit
+MLX			= -L../mlx -lmlx -framework OpenGL -framework AppKit
 
 #--------------------------------SOURCES----------------------------------------
 

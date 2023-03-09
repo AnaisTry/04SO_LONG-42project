@@ -6,7 +6,7 @@
 /*   By: angassin <angassin@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 23:34:59 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/08 22:40:02 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/09 20:31:05 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /*									[Includes]								*/
 
 // minilibX
-# include "../mlx/mlx.h"
+# include "../../mlx/mlx.h"
 // exit
 # include <stdlib.h>
 // open
