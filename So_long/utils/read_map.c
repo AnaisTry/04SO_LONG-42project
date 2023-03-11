@@ -6,7 +6,7 @@
 /*   By: angassin <angassin@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 12:44:15 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/09 23:58:55 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/11 19:48:12 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,13 @@ char	**read_file(char *file)
 void	check_elements(t_program *game)
 {
 	ft_printf("check_elements\n");
-	if (count_elements(game, PLAYER) != 1)
+	game->nb_items = count_elements(game, ITEM);
+	if (game->nb_items < 1)
+		error_exit("At least one item is required on the map");
+	else if (count_elements(game, PLAYER) != 1)
 		error_exit("There must be only one player on the map");
 	else if (count_elements(game, EXIT) != 1)
 		error_exit("There must be only one exit on the map");
-	else if (count_elements(game, ITEM) <= 0)
-		error_exit("At least one item is required on the map");
 }
 
 /* 

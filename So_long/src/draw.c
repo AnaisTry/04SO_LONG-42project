@@ -6,7 +6,7 @@
 /*   By: angassin <angassin@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 21:27:52 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/09 17:58:49 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/11 19:52:21 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ static void	draw_elements(t_program *game)
 	}
 	if (game->elements.type == ITEM)
 	{
-		game->nb_items++;
 		game->item_pos.x = game->elements.pos.y * IMG_SCALE;
 		game->item_pos.y = game->elements.pos.x * IMG_SCALE;
 		mlx_put_image_to_window(game->mlx, game->window.ptr, game->item.ptr,
