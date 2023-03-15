@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angassin <angassin@student.s19.be>         +#+  +:+       +#+        */
+/*   By: angassin <angassin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 12:44:15 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/11 19:48:12 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/15 13:42:02 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	check_map(char	*map_file, t_program *game)
 	ft_printf("window height : %d\n", game->window.size.y);
 	check_elements(game);
 	check_grid(game);
+	check_path(game);
+	
 }
 
 //ft_printf("all the lines: \n%s\n", lines);
@@ -41,6 +43,7 @@ char	**read_file(char *file)
 	char	*lines;
 	char	*current_line;
 	int		fd;
+	char	*tmp;
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
@@ -53,7 +56,9 @@ char	**read_file(char *file)
 	{
 		if (current_line[0] == '\n')
 			error_exit("Invalid map");
+		tmp = lines;
 		lines = ft_strjoin(lines, current_line);
+		free (tmp);
 		free(current_line);
 		current_line = get_next_line(fd);
 	}
@@ -66,8 +71,8 @@ char	**read_file(char *file)
 
 void	check_elements(t_program *game)
 {
-	ft_printf("check_elements\n");
 	game->nb_items = count_elements(game, ITEM);
+	ft_printf("nb_elements : %d\n", game->nb_items);
 	if (game->nb_items < 1)
 		error_exit("At least one item is required on the map");
 	else if (count_elements(game, PLAYER) != 1)

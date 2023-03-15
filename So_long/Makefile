@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: angassin <angassin@student.s19.be>         +#+  +:+       +#+         #
+#    By: angassin <angassin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/21 17:16:32 by angassin          #+#    #+#              #
-#    Updated: 2023/03/09 22:40:56 by angassin         ###   ########.fr        #
+#    Updated: 2023/03/15 12:39:48 by angassin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ CFLAGS		= -Wall -Wextra -Werror
 
 DEBUG		=  -g3 -fsanitize=address
 
-MLX			= -L../mlx -lmlx -framework OpenGL -framework AppKit
+# -L../mlx
+MLX			=  -lmlx -framework OpenGL -framework AppKit
 
 #--------------------------------SOURCES----------------------------------------
 
@@ -42,7 +43,7 @@ LIBFT		= $(addprefix libft/, $(LIBFT_A))
 GAME		= main.c draw.c
 GAME_SRC	= $(addprefix src/, $(GAME))
 
-UTILS		= window.c image.c hooks.c read_map.c errors.c utils.c #color.c
+UTILS		= window.c image.c hooks.c read_map.c errors.c utils.c check_path.c
 UTILS_SRC	= $(addprefix utils/, $(UTILS)) 
 
 OBJ			= $(SRC:.c=.o)

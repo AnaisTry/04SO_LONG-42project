@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angassin <angassin@student.s19.be>         +#+  +:+       +#+        */
+/*   By: angassin <angassin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 23:34:59 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/09 23:52:44 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/15 12:55:00 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 /*									[Includes]								*/
 
 // minilibX
-# include "../../mlx/mlx.h"
+//# include "../../mlx/mlx.h"
+# include <mlx.h>
 // exit
 # include <stdlib.h>
 // open
@@ -40,6 +41,7 @@
 # define MAP_EXT ".ber"
 # define IMG_SCALE 96
 # define VALID_CHARS "01CEP"
+# define CHECKED 'X'
 // events
 # define DESTROY_NOTIFY 17
 # define MASK 0
@@ -81,7 +83,10 @@ typedef struct s_map
 	char		**map;
 	t_elements	type;
 	t_vector	pos;
+	int			check_items;
+	bool		check_exit;
 }				t_map;
+
 typedef struct s_window
 {
 	void		*ptr;
@@ -144,5 +149,9 @@ void		error_exit(char *err_message);
 // utils.c
 int			map_height(char	**map);
 int			count_elements(t_program *game, char type);
+void		*free_array(char **arr, int row);
+
+// check_path.c
+void	check_path(t_program	*game);
 
 #endif

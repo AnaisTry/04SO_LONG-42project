@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angassin <angassin@student.s19.be>         +#+  +:+       +#+        */
+/*   By: angassin <angassin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 19:49:44 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/11 19:50:52 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/15 13:34:45 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,13 @@ int	count_elements(t_program *game, char type)
 			if (game->elements.map[i][j] == type)
 				nb++;
 	}
-	ft_printf("nb_elements : %d\n", nb);
 	return (nb);
+}
+
+void	*free_array(char **arr, int row)
+{
+	while (row--)
+		free(arr[row]);
+	free(arr);
+	return (NULL);
 }
