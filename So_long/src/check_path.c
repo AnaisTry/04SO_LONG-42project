@@ -6,7 +6,7 @@
 /*   By: angassin <angassin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 19:35:53 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/16 13:08:33 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/16 16:54:44 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,10 @@ void	check_path(t_program	*game)
 	bfsearch_elements(copy, game, x, y);
 	if (game->elements.check_exit == false
 		|| game->elements.check_items != game->nb_items)
-		error_exit("Invalid map : no valid path");
+	{
+		free_array(copy, game->window.size.y);
+		error_exit("Invalid map : no valid path", game);
+	}
 	free_array(copy, game->window.size.y);
 }
 
@@ -49,7 +52,7 @@ static char	**array_dup(t_program *game)
 	height = game->window.size.y;
 	copy = malloc(sizeof(char *) * (height + 1));
 	if (!copy)
-		error_exit("Mem allocation, could not duplicate the map\n");
+		error_exit("Mem allocation, could not duplicate the map\n", game);
 	i = 0;
 	while (i < height)
 	{

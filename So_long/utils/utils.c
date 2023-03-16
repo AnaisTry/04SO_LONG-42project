@@ -6,7 +6,7 @@
 /*   By: angassin <angassin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 19:49:44 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/16 12:54:20 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/16 17:10:30 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	count_elements(t_program *game, char type)
 
 void	*free_array(char **arr, int row)
 {
+	ft_printf("free_array\n");
 	while (row--)
 		free(arr[row]);
 	free(arr);

@@ -6,7 +6,7 @@
 /*   By: angassin <angassin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 23:34:59 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/16 13:00:56 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/16 17:04:27 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,7 @@ int			ft_close(t_program *game);
 t_image		ft_new_sprite(void *mlx, char *path);
 
 // errors.c
-void		error_exit(char *err_message);
+void		error_exit(char *err_message, t_program *game);
 
 // utils.c
 int			map_height(char	**map);

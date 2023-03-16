@@ -6,7 +6,7 @@
 /*   By: angassin <angassin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 16:20:10 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/16 13:03:31 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/16 17:38:20 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 int	ft_close(t_program *game)
 {
-	(void)game;
 	ft_printf("closed\n");
 	if (game->mlx != NULL)
+	{
+		ft_printf("destroy window\n");
 		mlx_destroy_window(game->mlx, game->window.ptr);
+	}
 	exit(0);
 }
 
