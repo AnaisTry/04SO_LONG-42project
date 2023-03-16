@@ -6,7 +6,7 @@
 #    By: angassin <angassin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/21 17:16:32 by angassin          #+#    #+#              #
-#    Updated: 2023/03/15 12:39:48 by angassin         ###   ########.fr        #
+#    Updated: 2023/03/15 15:09:33 by angassin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ CC			= cc
 
 CFLAGS		= -Wall -Wextra -Werror 
 
-DEBUG		=  -g3 -fsanitize=address
+DEBUG		=  -g -fsanitize=address
 
 # -L../mlx
 MLX			=  -lmlx -framework OpenGL -framework AppKit

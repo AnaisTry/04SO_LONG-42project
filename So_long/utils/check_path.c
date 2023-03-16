@@ -6,7 +6,7 @@
 /*   By: angassin <angassin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 19:35:53 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/15 13:25:35 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/15 15:19:57 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,8 @@ void	check_path(t_program	*game)
 		|| game->elements.check_items != game->nb_items)
 		error_exit("Invalid map : no valid path");
 	free_array(copy, game->window.size.y);
-
 }
 
-/* duplicates the map to be able to check the path*/
 char	**array_dup(t_program *game)
 {
 	int		height;
@@ -78,7 +76,7 @@ void	bfsearch_elements(char	**map, t_program *game, int x, int y)
 	else if (map[y][x] == EXIT)
 		game->elements.check_exit = true;
 	if (x >= game->window.size.x || y >= game->window.size.y || x < 0 || y < 0
-		|| map[y][x] == WALL || map[y][x] == CHECKED || map[y][x]== EXIT)
+		|| map[y][x] == WALL || map[y][x] == CHECKED || map[y][x] == EXIT)
 		return ;
 	map[y][x] = CHECKED;
 	bfsearch_elements(map, game, x + 1, y);

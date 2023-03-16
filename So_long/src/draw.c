@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angassin <angassin@student.s19.be>         +#+  +:+       +#+        */
+/*   By: angassin <angassin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 21:27:52 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/11 19:52:21 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/16 10:08:04 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	draw_map(t_program	*game)
 
 	game->tile = ft_new_sprite(game->mlx, "sprites/grass_96.xpm");
 	game->wall = ft_new_sprite(game->mlx, "sprites/trees_96.xpm");
-	game->item = ft_new_sprite(game->mlx, "sprites/strawberry_96.xpm");
+	game->item = ft_new_sprite(game->mlx, "sprites/food_01.xpm");
 	game->sprite = ft_new_sprite(game->mlx, "sprites/fox_96.xpm");
 	game->exit = ft_new_sprite(game->mlx, "sprites/blue_96.xpm");
 	i_row = -1;

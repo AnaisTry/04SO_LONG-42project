@@ -6,7 +6,7 @@
 /*   By: angassin <angassin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 12:44:15 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/15 13:42:02 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/15 15:45:16 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 char	**read_file(char *file);
 void	check_elements(t_program *game);
 void	check_grid(t_program *game);
+char	*save_lines(char *lines, char *current_line, int fd);
 
 /* 
 	check the extension of the map_file
@@ -33,17 +34,14 @@ void	check_map(char	*map_file, t_program *game)
 	check_elements(game);
 	check_grid(game);
 	check_path(game);
-	
 }
 
-//ft_printf("all the lines: \n%s\n", lines);
 char	**read_file(char *file)
 {
 	char	**map;
 	char	*lines;
 	char	*current_line;
 	int		fd;
-	char	*tmp;
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
@@ -52,21 +50,30 @@ char	**read_file(char *file)
 	if (!lines || lines[0] == '\n')
 		error_exit("Invalid map");
 	current_line = get_next_line(fd);
+	lines = save_lines(lines, current_line, fd);
+	ft_printf("Map : \n%s\n", lines);
+	map = ft_split(lines, '\n');
+	if (lines)
+		free(lines);
+	close(fd);
+	return (map);
+}
+
+char	*save_lines(char	*lines, char *current_line, int fd)
+{
+	char	*tmp;
+
 	while (current_line)
 	{
 		if (current_line[0] == '\n')
 			error_exit("Invalid map");
 		tmp = lines;
 		lines = ft_strjoin(lines, current_line);
-		free (tmp);
+		free(tmp);
 		free(current_line);
 		current_line = get_next_line(fd);
 	}
-	map = ft_split(lines, '\n');
-	if (lines)
-		free(lines);
-	close(fd);
-	return (map);
+	return (lines);
 }
 
 void	check_elements(t_program *game)
