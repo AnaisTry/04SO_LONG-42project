@@ -6,20 +6,21 @@
 /*   By: angassin <angassin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 12:44:15 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/15 15:45:16 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/16 12:45:05 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-char	**read_file(char *file);
-void	check_elements(t_program *game);
-void	check_grid(t_program *game);
-char	*save_lines(char *lines, char *current_line, int fd);
+static char	**read_file(char *file);
+static void	check_elements(t_program *game);
+static void	check_grid(t_program *game);
+static char	*save_lines(char *lines, char *current_line, int fd);
 
 /* 
 	check the extension of the map_file
 	import the content of the map_file and retrieve datas
+	check the validity of the map
 */
 void	check_map(char	*map_file, t_program *game)
 {
@@ -36,7 +37,7 @@ void	check_map(char	*map_file, t_program *game)
 	check_path(game);
 }
 
-char	**read_file(char *file)
+static char	**read_file(char *file)
 {
 	char	**map;
 	char	*lines;
@@ -59,7 +60,7 @@ char	**read_file(char *file)
 	return (map);
 }
 
-char	*save_lines(char	*lines, char *current_line, int fd)
+static char	*save_lines(char	*lines, char *current_line, int fd)
 {
 	char	*tmp;
 
@@ -76,10 +77,10 @@ char	*save_lines(char	*lines, char *current_line, int fd)
 	return (lines);
 }
 
-void	check_elements(t_program *game)
+static void	check_elements(t_program *game)
 {
 	game->nb_items = count_elements(game, ITEM);
-	ft_printf("nb_elements : %d\n", game->nb_items);
+	ft_printf("nb_items : %d\n", game->nb_items);
 	if (game->nb_items < 1)
 		error_exit("At least one item is required on the map");
 	else if (count_elements(game, PLAYER) != 1)
@@ -92,15 +93,7 @@ void	check_elements(t_program *game)
 	checks that the map is rectangular and surrounded by walls
 	checks that there are only valid characters on the map 
 */
-// ft_printf("wall value is : %d\n", WALL);
-//ft_printf("map[%d][0] is '%c'\n", i_row, (char)game->map[i_row][0]);
-//ft_printf("map[%d][%d] is '%c'\n", i_row, game->window.size.x - 1,
-//	(char)game->map[i_row][game->window.size.x - 1]);
-//ft_printf("map[%d][window.size.x - 1] is %d\n", i_row,
-//game->window.size.x - 1);
-//ft_printf("map[window.size.y - 1][%d] is %d\n", i_col, 
-//game->window.size.y - 1);
-void	check_grid(t_program *game)
+static void	check_grid(t_program *game)
 {
 	int	i_row;
 	int	i_col;

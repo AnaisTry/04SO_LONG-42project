@@ -6,7 +6,7 @@
 /*   By: angassin <angassin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 23:34:59 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/15 15:17:57 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/16 13:00:56 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,11 +123,22 @@ typedef struct s_program
 	bool		exit_open;
 }				t_program;
 
-/* src */
+/* 									[src] 									*/
+
+// read_map.c
+void		check_map(char	*argv, t_program *game);
+
+// check_path.c
+void		check_path(t_program	*game);
+
 //draw.c
 void		draw_map(t_program	*game);
 
-/* utils */
+// hook.c
+//return value required by mlx_key_hook
+int			ft_input(int key, t_program *param);
+
+/* 									[utils] 								*/
 
 // window.c
 t_window	ft_new_window(t_program game, int width, int height, char *name);
@@ -136,13 +147,6 @@ int			ft_close(t_program *game);
 // image.c
 t_image		ft_new_sprite(void *mlx, char *path);
 
-// hook.c
-//return value required by mlx_key_hook
-int			ft_input(int key, t_program *param);
-
-// read_map.c
-void		check_map(char	*argv, t_program *game);
-
 // errors.c
 void		error_exit(char *err_message);
 
@@ -150,8 +154,5 @@ void		error_exit(char *err_message);
 int			map_height(char	**map);
 int			count_elements(t_program *game, char type);
 void		*free_array(char **arr, int row);
-
-// check_path.c
-void		check_path(t_program	*game);
 
 #endif

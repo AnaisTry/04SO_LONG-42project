@@ -6,7 +6,7 @@
 /*   By: angassin <angassin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 19:49:44 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/15 13:34:45 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/16 12:54:20 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	map_height(char	**map)
 	i = 0;
 	while (map && map[i])
 		i++;
-	ft_printf("map height : %d\n", i);
 	return (i);
 }
 

@@ -6,7 +6,7 @@
 /*   By: angassin <angassin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 21:27:52 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/16 11:44:52 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/16 12:44:39 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	draw_map(t_program	*game)
 			draw_sprite(game);
 		}
 	}
-	ft_printf("nb_items : %d\n", game->nb_items);
 }
 
 /* put grass as background or sky for the exit */

@@ -6,16 +6,14 @@
 /*   By: angassin <angassin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 16:39:34 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/15 13:23:59 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/16 13:10:35 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	game_init(t_program *game);
+static void	game_init(t_program *game);
 
-//mlx_loop_hook(game.mlx, *ft_update, &game);
-// event loop
 int	main(int argc, char	**argv)
 {
 	t_program	game;
@@ -38,9 +36,8 @@ int	main(int argc, char	**argv)
 	among which the display = connexion identifier to X server.														
 	returns a t_xvar or void *0 if failed
 */
-void	game_init(t_program *game)
+static void	game_init(t_program *game)
 {
-	ft_printf("init\n");
 	game->mlx = mlx_init();
 	game->window = ft_new_window(*game, (game->window.size.x) * IMG_SCALE,
 			(game->window.size.y) * IMG_SCALE, "so_long");

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angassin <angassin@student.s19.be>         +#+  +:+       +#+        */
+/*   By: angassin <angassin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 16:20:10 by angassin          #+#    #+#             */
-/*   Updated: 2023/03/09 20:30:10 by angassin         ###   ########.fr       */
+/*   Updated: 2023/03/16 13:03:31 by angassin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_close(t_program *game)
 {
 	(void)game;
-	ft_printf("here close\n");
+	ft_printf("closed\n");
 	if (game->mlx != NULL)
 		mlx_destroy_window(game->mlx, game->window.ptr);
 	exit(0);
@@ -33,7 +33,7 @@ t_window	ft_new_window(t_program game, int width, int height, char *name)
 	game.window.ptr = mlx_new_window(game.mlx, width, height, name);
 	game.window.size.x = width;
 	game.window.size.y = height;
-	ft_printf("here window\n");
+	ft_printf("open window\n");
 	mlx_hook(game.window.ptr, DESTROY_NOTIFY, MASK, ft_close, &game);
 	return (game.window);
 }
