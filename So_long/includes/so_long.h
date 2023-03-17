@@ -17,7 +17,6 @@
 
 // minilibX
 # include "../../mlx/mlx.h"
-//# include <mlx.h>
 // exit
 # include <stdlib.h>
 // open
