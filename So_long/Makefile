@@ -27,10 +27,9 @@ CC			= cc
 
 CFLAGS		= -Wall -Wextra -Werror 
 
-DEBUG		=  -g -fsanitize=address
+DEBUG		=  -g #-fsanitize=address
 
-# -L../mlx
-MLX			=  -lmlx -framework OpenGL -framework AppKit
+MLX			=  -L../mlx -lmlx -framework OpenGL -framework AppKit
 
 #--------------------------------SOURCES----------------------------------------
 

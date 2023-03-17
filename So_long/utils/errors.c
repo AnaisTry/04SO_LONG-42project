@@ -21,4 +21,3 @@ void	error_exit(char *err_message, t_program *game)
 	destroy_images(game);
 	exit (1);
 }
-

@@ -24,7 +24,6 @@ static char	*save_lines(char *lines, char *row, int fd, t_program *game);
 */
 void	check_map(char	*map_file, t_program *game)
 {
-	game->elements.map = NULL;
 	if (ft_strrncmp(map_file, MAP_EXT, 4))
 		error_exit("Wrong file extension", game);
 	game->elements.map = read_file(map_file, game);

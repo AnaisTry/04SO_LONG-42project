@@ -12,6 +12,7 @@
 
 #include "../includes/so_long.h"
 
+static void	var_init(t_program *game);
 static void	game_init(t_program *game);
 
 int	main(int argc, char	**argv)
@@ -23,10 +24,11 @@ int	main(int argc, char	**argv)
 		perror("Wrong number of arguments, correct input: <program> <map>.ber");
 		exit(1);
 	}
+	var_init(&game);
 	check_map(argv[1], &game);
 	game_init(&game);
 	draw_map(&game);
-	mlx_key_hook(game.window.ptr, *ft_input, &game);
+	mlx_key_hook(game.window.ptr, ft_input, &game);
 	mlx_loop(game.mlx);
 	return (0);
 }
@@ -39,8 +41,15 @@ int	main(int argc, char	**argv)
 static void	game_init(t_program *game)
 {
 	game->mlx = mlx_init();
-	game->window = ft_new_window(*game, (game->window.size.x) * IMG_SCALE,
+	if (!game->mlx)
+		error_exit("mlx_init failed", game);
+	game->window = ft_new_window(game, (game->window.size.x) * IMG_SCALE,
 			(game->window.size.y) * IMG_SCALE, "so_long");
+}
+
+static void	var_init(t_program *game)
+{
+	game->elements.map = NULL;
 	game->wall.ptr = NULL;
 	game->tile.ptr = NULL;
 	game->item.ptr = NULL;

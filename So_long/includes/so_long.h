@@ -16,8 +16,8 @@
 /*									[Includes]								*/
 
 // minilibX
-//# include "../../mlx/mlx.h"
-# include <mlx.h>
+# include "../../mlx/mlx.h"
+//# include <mlx.h>
 // exit
 # include <stdlib.h>
 // open
@@ -109,15 +109,13 @@ typedef struct s_program
 	t_map		elements;
 	t_window	window;
 	t_image		wall;
-	t_vector	wall_pos;
 	t_image		sprite;
 	t_vector	sprite_pos;
 	t_image		item;
-	t_vector	item_pos;
 	t_image		tile;
-	t_vector	tile_pos;
 	t_image		exit;
 	t_vector	exit_pos;
+	t_vector	elem_pos;
 	int			nb_mov;
 	int			nb_items;
 	bool		exit_open;
@@ -141,7 +139,7 @@ int			ft_input(int key, t_program *param);
 /* 									[utils] 								*/
 
 // window.c
-t_window	ft_new_window(t_program game, int width, int height, char *name);
+t_window	ft_new_window(t_program *game, int width, int height, char *name);
 int			ft_close(t_program *game);
 
 // image.c
@@ -155,6 +153,6 @@ void		error_exit(char *err_message, t_program *game);
 int			map_height(char	**map);
 int			count_elements(t_program *game, char type);
 void		*free_array(char **arr);
-void	destroy_images(t_program *game);
+void		destroy_images(t_program *game);
 
 #endif

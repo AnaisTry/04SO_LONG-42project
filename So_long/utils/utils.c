@@ -42,14 +42,12 @@ int	count_elements(t_program *game, char type)
 
 void	*free_array(char **arr)
 {
-	int row;
+	int	row;
 
 	row = 0;
-	ft_printf("free_array\n");
 	while (arr[row] != NULL)
 	{
 		free(arr[row]);
-		ft_printf("row : %d\n", row);
 		row++;
 	}
 	free(arr);
@@ -66,7 +64,6 @@ void	destroy_images(t_program *game)
 		mlx_destroy_image(game->mlx, game->item.ptr);
 	if (game->sprite.ptr != NULL)
 		mlx_destroy_image(game->mlx, game->sprite.ptr);
-	if	(game->exit.ptr != NULL)
+	if (game->exit.ptr != NULL)
 		mlx_destroy_image(game->mlx, game->exit.ptr);
-
 }

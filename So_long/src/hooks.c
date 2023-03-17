@@ -31,7 +31,7 @@ int	ft_input(int key, t_program *game)
 
 /* 
 	Interactions with the keyboard
-	1. determines the new pos of the sprite according to the key pressed
+	1. determines the new positon of the sprite according to the key pressed
 	2. update the elements accordingly
 	3. displays the new image of the player
 */
@@ -77,8 +77,8 @@ static int	ft_update(t_program	*game, int map_x, int map_y)
 	if (game->elements.map[map_x][map_y] == ITEM)
 	{
 		game->elements.map[map_x][map_y] = TILE;
-		game->tile_pos.x = map_y * IMG_SCALE;
-		game->tile_pos.y = map_x * IMG_SCALE;
+		game->elem_pos.x = map_y * IMG_SCALE;
+		game->elem_pos.y = map_x * IMG_SCALE;
 		action(game);
 	}
 	mlx_put_image_to_window(game->mlx, game->window.ptr,
@@ -90,14 +90,14 @@ static int	ft_update(t_program	*game, int map_x, int map_y)
 static void	action(t_program *game)
 {
 	mlx_put_image_to_window(game->mlx, game->window.ptr,
-		game->tile.ptr, game->tile_pos.x, game->tile_pos.y);
+		game->tile.ptr, game->elem_pos.x, game->elem_pos.y);
 	game->nb_items--;
 	ft_printf("items left : %d\n", game->nb_items);
 	if (game->nb_items == 0)
 	{
 		game->exit_open = true;
 		mlx_put_image_to_window(game->mlx, game->window.ptr, game->tile.ptr,
-		 	game->exit_pos.x, game->exit_pos.y);
+			game->exit_pos.x, game->exit_pos.y);
 		mlx_destroy_image(game->mlx, game->exit.ptr);
 		game->exit = ft_new_sprite(game, "sprites/door_fullyopen_96.xpm");
 		mlx_put_image_to_window(game->mlx, game->window.ptr, game->exit.ptr,
