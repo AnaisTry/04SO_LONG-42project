@@ -12,6 +12,16 @@
 
 #include "../includes/so_long.h"
 
+void	error_exit(char *err_message, t_program *game)
+{
+	ft_printf("Error\n");
+	perror(err_message);
+	if (game->elements.map != NULL)
+		free_array(game->elements.map);
+	destroy_images(game);
+	exit (1);
+}
+
 int	map_height(char	**map)
 {
 	int	i;

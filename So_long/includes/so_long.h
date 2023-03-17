@@ -127,12 +127,12 @@ typedef struct s_program
 void		check_map(char	*argv, t_program *game);
 
 // check_path.c
-void		check_path(t_program	*game);
+void		check_path(t_program *game);
 
 //draw.c
-void		draw_map(t_program	*game);
+void		draw_map(t_program *game);
 
-// hook.c
+// hooks.c
 //return value required by mlx_key_hook
 int			ft_input(int key, t_program *param);
 
@@ -146,10 +146,8 @@ int			ft_close(t_program *game);
 t_image		ft_new_sprite(t_program *game, char *path);
 t_image		ft_new_image(t_program *game, int width, int height);
 
-// errors.c
-void		error_exit(char *err_message, t_program *game);
-
 // utils.c
+void		error_exit(char *err_message, t_program *game);
 int			map_height(char	**map);
 int			count_elements(t_program *game, char type);
 void		*free_array(char **arr);

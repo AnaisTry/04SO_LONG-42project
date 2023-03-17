@@ -27,7 +27,7 @@ CC			= cc
 
 CFLAGS		= -Wall -Wextra -Werror 
 
-DEBUG		=  -g #-fsanitize=address
+DEBUG		=  -g -fsanitize=address
 
 MLX			=  -L../mlx -lmlx -framework OpenGL -framework AppKit
 
@@ -42,7 +42,7 @@ LIBFT		= $(addprefix libft/, $(LIBFT_A))
 GAME		= main.c read_map.c check_path.c draw.c hooks.c
 GAME_SRC	= $(addprefix src/, $(GAME))
 
-UTILS		= window.c image.c errors.c utils.c
+UTILS		= window.c image.c utils.c
 UTILS_SRC	= $(addprefix utils/, $(UTILS)) 
 
 OBJ			= $(SRC:.c=.o)

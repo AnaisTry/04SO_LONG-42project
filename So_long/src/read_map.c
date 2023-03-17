@@ -15,7 +15,7 @@
 static char	**read_file(char *file, t_program *game);
 static void	check_elements(t_program *game);
 static void	check_grid(t_program *game);
-static char	*save_lines(char *lines, char *row, int fd, t_program *game);
+static char	*save_lines(char *lines, int fd, t_program *game);
 
 /* 
 	check the extension of the map_file
@@ -40,7 +40,6 @@ static char	**read_file(char *file, t_program *game)
 {
 	char	**map;
 	char	*lines;
-	char	*current_line;
 	int		fd;
 
 	fd = open(file, O_RDONLY);
@@ -48,9 +47,11 @@ static char	**read_file(char *file, t_program *game)
 		error_exit("", game);
 	lines = get_next_line(fd);
 	if (!lines || lines[0] == '\n')
+	{
+		close(fd);
 		error_exit("Invalid map", game);
-	current_line = get_next_line(fd);
-	lines = save_lines(lines, current_line, fd, game);
+	}
+	lines = save_lines(lines, fd, game);
 	ft_printf("Map : \n%s\n", lines);
 	map = ft_split(lines, '\n');
 	if (lines)
@@ -59,19 +60,21 @@ static char	**read_file(char *file, t_program *game)
 	return (map);
 }
 
-static char	*save_lines(char *lines, char *row, int fd, t_program *game)
+static char	*save_lines(char *lines, int fd, t_program *game)
 {
 	char	*tmp;
+	char	*current_line;
 
-	while (row)
+	current_line = get_next_line(fd);
+	while (current_line)
 	{
-		if (row[0] == '\n')
+		if (current_line[0] == '\n')
 			error_exit("Invalid map", game);
 		tmp = lines;
-		lines = ft_strjoin(lines, row);
+		lines = ft_strjoin(lines, current_line);
 		free(tmp);
-		free(row);
-		row = get_next_line(fd);
+		free(current_line);
+		current_line = get_next_line(fd);
 	}
 	return (lines);
 }
