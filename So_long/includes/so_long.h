@@ -145,7 +145,8 @@ t_window	ft_new_window(t_program game, int width, int height, char *name);
 int			ft_close(t_program *game);
 
 // image.c
-t_image		ft_new_sprite(void *mlx, char *path);
+t_image		ft_new_sprite(t_program *game, char *path);
+t_image		ft_new_image(t_program *game, int width, int height);
 
 // errors.c
 void		error_exit(char *err_message, t_program *game);
@@ -153,6 +154,7 @@ void		error_exit(char *err_message, t_program *game);
 // utils.c
 int			map_height(char	**map);
 int			count_elements(t_program *game, char type);
-void		*free_array(char **arr, int row);
+void		*free_array(char **arr);
+void	destroy_images(t_program *game);
 
 #endif

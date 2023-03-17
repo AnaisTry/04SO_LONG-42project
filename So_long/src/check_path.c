@@ -37,10 +37,10 @@ void	check_path(t_program	*game)
 	if (game->elements.check_exit == false
 		|| game->elements.check_items != game->nb_items)
 	{
-		free_array(copy, game->window.size.y);
+		free_array(copy);
 		error_exit("Invalid map : no valid path", game);
 	}
-	free_array(copy, game->window.size.y);
+	free_array(copy);
 }
 
 static char	**array_dup(t_program *game)

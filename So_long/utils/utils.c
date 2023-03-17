@@ -40,11 +40,33 @@ int	count_elements(t_program *game, char type)
 	return (nb);
 }
 
-void	*free_array(char **arr, int row)
+void	*free_array(char **arr)
 {
+	int row;
+
+	row = 0;
 	ft_printf("free_array\n");
-	while (row--)
+	while (arr[row] != NULL)
+	{
 		free(arr[row]);
+		ft_printf("row : %d\n", row);
+		row++;
+	}
 	free(arr);
 	return (NULL);
+}
+
+void	destroy_images(t_program *game)
+{
+	if (game->wall.ptr != NULL)
+		mlx_destroy_image(game->mlx, game->wall.ptr);
+	if (game->tile.ptr != NULL)
+		mlx_destroy_image(game->mlx, game->tile.ptr);
+	if (game->item.ptr != NULL)
+		mlx_destroy_image(game->mlx, game->item.ptr);
+	if (game->sprite.ptr != NULL)
+		mlx_destroy_image(game->mlx, game->sprite.ptr);
+	if	(game->exit.ptr != NULL)
+		mlx_destroy_image(game->mlx, game->exit.ptr);
+
 }

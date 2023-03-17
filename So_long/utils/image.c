@@ -20,11 +20,13 @@
 	* 	the line size is the amount of pixels in one line of the image
 	* 	the endian contains info on how the colors are stored, not used on mac
 */
-t_image	ft_new_image(void	*mlx, int width, int height)
+t_image	ft_new_image(t_program *game, int width, int height)
 {
 	t_image	img;
 
-	img.ptr = mlx_new_image(mlx, width, height);
+	img.ptr = mlx_new_image(game->mlx, width, height);
+	if (!img.ptr)
+		error_exit("file error\n", game);
 	img.size.x = width;
 	img.size.y = height;
 	img.pixels = mlx_get_data_addr(img.ptr, &img.bits_per_pixel, &img.line_size,
@@ -33,11 +35,13 @@ t_image	ft_new_image(void	*mlx, int width, int height)
 }
 
 /* Returns an image with the sprite found in <path> */
-t_image	ft_new_sprite(void *mlx, char *path)
+t_image	ft_new_sprite(t_program *game, char *path)
 {
 	t_image	img;
 
-	img.ptr = mlx_xpm_file_to_image(mlx, path, &img.size.x, &img.size.y);
+	img.ptr = mlx_xpm_file_to_image(game->mlx, path, &img.size.x, &img.size.y);
+	if (!img.ptr)
+		error_exit("file error\n", game);
 	img.pixels = mlx_get_data_addr(img.ptr, &img.bits_per_pixel, &img.line_size,
 			&img.endian);
 	return (img);

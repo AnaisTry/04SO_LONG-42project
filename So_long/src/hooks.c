@@ -71,10 +71,7 @@ static void	key_pressed(int key, t_program *game, int map_x, int map_y)
 static int	ft_update(t_program	*game, int map_x, int map_y)
 {
 	if (game->elements.map[map_x][map_y] == EXIT)
-	{
 		ft_close(game);
-		return (1);
-	}
 	game->nb_mov++;
 	ft_printf("nb movements : %d\n", game->nb_mov);
 	if (game->elements.map[map_x][map_y] == ITEM)
@@ -92,8 +89,6 @@ static int	ft_update(t_program	*game, int map_x, int map_y)
 /* displays tile instead of item taken, open the door if no items */
 static void	action(t_program *game)
 {
-	t_image	blue;
-
 	mlx_put_image_to_window(game->mlx, game->window.ptr,
 		game->tile.ptr, game->tile_pos.x, game->tile_pos.y);
 	game->nb_items--;
@@ -101,10 +96,10 @@ static void	action(t_program *game)
 	if (game->nb_items == 0)
 	{
 		game->exit_open = true;
-		blue = ft_new_sprite(game->mlx, "sprites/blue_96.xpm");
-		mlx_put_image_to_window(game->mlx, game->window.ptr, blue.ptr,
-			game->exit_pos.x, game->exit_pos.y);
-		game->exit = ft_new_sprite(game->mlx, "sprites/door_fullyopen_96.xpm");
+		mlx_put_image_to_window(game->mlx, game->window.ptr, game->tile.ptr,
+		 	game->exit_pos.x, game->exit_pos.y);
+		mlx_destroy_image(game->mlx, game->exit.ptr);
+		game->exit = ft_new_sprite(game, "sprites/door_fullyopen_96.xpm");
 		mlx_put_image_to_window(game->mlx, game->window.ptr, game->exit.ptr,
 			game->exit_pos.x, game->exit_pos.y);
 	}

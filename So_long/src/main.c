@@ -41,6 +41,11 @@ static void	game_init(t_program *game)
 	game->mlx = mlx_init();
 	game->window = ft_new_window(*game, (game->window.size.x) * IMG_SCALE,
 			(game->window.size.y) * IMG_SCALE, "so_long");
+	game->wall.ptr = NULL;
+	game->tile.ptr = NULL;
+	game->item.ptr = NULL;
+	game->sprite.ptr = NULL;
+	game->exit.ptr = NULL;
 	game->nb_mov = 0;
 	game->exit_open = false;
 }

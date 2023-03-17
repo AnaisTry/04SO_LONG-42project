@@ -17,6 +17,8 @@ void	error_exit(char *err_message, t_program *game)
 	ft_printf("Error\n");
 	perror(err_message);
 	if (game->elements.map != NULL)
-		free_array(game->elements.map, game->window.size.y);
+		free_array(game->elements.map);
+	destroy_images(game);
 	exit (1);
 }
+

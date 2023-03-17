@@ -21,11 +21,11 @@ void	draw_map(t_program	*game)
 	int	i_row;
 	int	i_col;
 
-	game->tile = ft_new_sprite(game->mlx, "sprites/grass_96.xpm");
-	game->wall = ft_new_sprite(game->mlx, "sprites/trees_96.xpm");
-	game->item = ft_new_sprite(game->mlx, "sprites/apple.xpm");
-	game->sprite = ft_new_sprite(game->mlx, "sprites/fox_96.xpm");
-	game->exit = ft_new_sprite(game->mlx, "sprites/blue_96.xpm");
+	ft_printf("draw\n");
+	game->tile = ft_new_sprite(game, "sprites/grass_96.xpm");
+	game->wall = ft_new_sprite(game, "sprites/trees_96.xpm");
+	game->item = ft_new_sprite(game, "sprites/apple_s.xpm");
+	game->sprite = ft_new_sprite(game, "sprites/fox_96.xpm");
 	i_row = -1;
 	while (game->elements.map[++i_row])
 	{
@@ -45,14 +45,14 @@ void	draw_map(t_program	*game)
 /* put grass as background or sky for the exit */
 static void	draw_background(t_program *game)
 {
-	if (game->elements.type == EXIT)
-	{
-		game->exit_pos.x = game->elements.pos.y * IMG_SCALE;
-		game->exit_pos.y = game->elements.pos.x * IMG_SCALE;
-		mlx_put_image_to_window(game->mlx, game->window.ptr, game->exit.ptr,
-			game->exit_pos.x, game->exit_pos.y);
-	}
-	else
+	// if (game->elements.type == EXIT)
+	// {
+	// 	game->exit_pos.x = game->elements.pos.y * IMG_SCALE;
+	// 	game->exit_pos.y = game->elements.pos.x * IMG_SCALE;
+	// 	mlx_put_image_to_window(game->mlx, game->window.ptr, game->exit.ptr,
+	// 		game->exit_pos.x, game->exit_pos.y);
+	// }
+	// else
 	{
 		game->tile_pos.y = game->elements.pos.x * IMG_SCALE;
 		game->tile_pos.x = game->elements.pos.y * IMG_SCALE;
@@ -79,7 +79,7 @@ static void	draw_elements(t_program *game)
 	}
 	if (game->elements.type == EXIT)
 	{
-		game->exit = ft_new_sprite(game->mlx, "sprites/door_closed_96.xpm");
+		game->exit = ft_new_sprite(game, "sprites/door_closed_96.xpm");
 		game->exit_pos.x = game->elements.pos.y * IMG_SCALE;
 		game->exit_pos.y = game->elements.pos.x * IMG_SCALE;
 		mlx_put_image_to_window(game->mlx, game->window.ptr, game->exit.ptr,

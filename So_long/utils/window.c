@@ -14,12 +14,15 @@
 
 int	ft_close(t_program *game)
 {
-	ft_printf("closed\n");
+	ft_printf("closed : %d\n", game->window.size.y);
+	if (game->elements.map != NULL)
+		free_array(game->elements.map);
 	if (game->mlx != NULL)
 	{
 		ft_printf("destroy window\n");
 		mlx_destroy_window(game->mlx, game->window.ptr);
 	}
+	destroy_images(game);
 	exit(0);
 }
 
